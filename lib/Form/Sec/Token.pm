@@ -22,6 +22,7 @@ version 0.01
     ## store the digest somewhere in session
     ...
     ## build your form with the expiration and token as hiden fields
+    $form .= $FSToken->form_fields('XSRF_') . '</form>';
     ...
     ## The form gets posted and you create a new $FSToken with the posted fields
     my $newFSToken = Form::Sec::Token->new(ident => $session_key,
