@@ -130,6 +130,22 @@ sub match_digest {
 
 }
 
+=head2 form_fields
+
+takes an optional $prefix argument
+outputs the hidden form fields to include in your html form
+prefixing the field names with the prefix if specified
+
+=cut
+
+sub form_fields {
+    my $self = shift;
+    my $prefix = shift;
+    my $string = "<input type='hidden' name='$prefix"."expire' id='$prefix"."expire' value='".$self->expire()."' />";
+    $string .= "<input type='hidden' name='$prefix"."token' id='$prefix"."token' value='".$self->token()."' />";
+    return $string;
+}
+
 sub _mk_digester {
     my $self = shift;
     return sub {

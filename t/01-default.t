@@ -9,7 +9,8 @@ my $module = 'Form::Sec::Token';
 
 use_ok($module);
 can_ok($module, qw{new ident expire token digest match_token
-                   match_digest});
+                   match_digest
+                   form_fields});
 
 {
     my $mockmodule = new Test::MockModule('Data::GUID');
@@ -33,5 +34,13 @@ can_ok($module, qw{new ident expire token digest match_token
     ok($token->digest eq $token2->digest(), 'Two identical token objects have the same digest');
     ok($token->match_token('B45K698T'), 'match_token with an identical token returns true');
     ok($token->match_digest($token2->digest()), 'match_digest with an identical digest returns true');
+    ok($token->form_fields() eq "<input type='hidden' name='expire' id='expire' value='1 day' />".
+                                "<input type='hidden' name='token' id='token' value='B45K698T' />",
+       'form_fields returns a string with hidden form_fields');
+    ok($token->form_fields('baz') eq "<input type='hidden' name='bazexpire' id='bazexpire' value='1 day' />".
+                                "<input type='hidden' name='baztoken' id='baztoken' value='B45K698T' />",
+       'hidden form_fields use a prefix if specified');
+    
+    
 }
 
