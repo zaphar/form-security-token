@@ -36,6 +36,14 @@ version 0.01
     }
 
 
+=head1 CONSTRUCTORS
+ 
+=head2 new
+
+object constructor. requires an ident => $identifier pair in the args.
+Optionally can have expire => 'expiration value' pair also in the args
+Also Optionally can have token => $token specified in args.
+
 =cut
 
 sub new {
@@ -49,28 +57,71 @@ sub new {
 
 }
 
+=head1 ATTRIBUTES
+
+=head2 ident
+
+Immutable: returns the identifier attribute
+
+=cut
+
 sub ident {
     return shift->{ident}->();
 }
+
+=head2 expire 
+
+Immutable: returns the expire attribute
+
+=cut
 
 sub expire {
     return shift->{expire}->();
 }
 
+=head2 token
+
+Immutable: returns the token attribute
+
+=cut
+
 sub token {
     return shift->{token}->();
 }
+
+=head1 METHODS
+
+=head2 digest
+
+returns the digest of the stored data
+
+=cut
 
 sub digest {
     my $self = shift;
     return $self->_mk_digester()->( $self->token() );
 }
 
+=head2 match_token
+
+takes a token as an argument and compares it to the stored token. 
+Returns true or false
+this is useless I might just remove it. - jwall
+
+=cut
+
 sub match_token {
     my $self = shift;
     my $token = shift;
-    return $self->_mk_digester()->( $token ) eq $self->digest();
+    return $token eq $self->token();
 }
+
+=head2 match_digest
+
+takes a digest as an argument and compares it to its own digest. 
+Returns true or false
+
+=cut
 
 sub match_digest {
     my $self = shift;
