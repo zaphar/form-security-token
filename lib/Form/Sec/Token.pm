@@ -29,7 +29,7 @@ version 0.01
                                            token => $form_token_field);
     ## retrieve the digest you stored in the session
     ...
-    if ($session_digest eq $newFSToken->digest()) {
+    if ($newFSToken->match_digest($digest_from_session)) {
         ## continue
     } else {
         ## ack you just intercepted an XSRF attack
