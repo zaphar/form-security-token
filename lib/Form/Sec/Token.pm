@@ -34,6 +34,7 @@ version 0.01
         ## continue
     } else {
         ## ack you just intercepted an XSRF attack
+        ## maybe you should log it?
     }
 
 
