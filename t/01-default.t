@@ -9,7 +9,6 @@ my $module = 'Form::Sec::Token';
 
 use_ok($module);
 can_ok($module, qw{new ident expire token digest 
-                   assert_eq_token
                    assert_eq_digest
                    form_fields});
 
