@@ -1,13 +1,13 @@
 use Digest::SHA1;
 use Data::GUID;
 
-package Form::Sec::Token;
+package Form::Security::Token;
 
 our $VERSION = '0.01';
 
 =head1 NAME
 
-Form::Sec::Token - protection against XSRF (Cross Site Request Forgery)
+Form::Security::Token - protection against XSRF (Cross Site Request Forgery)
 
 =head1 VERSION
 
@@ -15,7 +15,7 @@ version 0.01
 
 =head1 SYNOPSIS
 
-    my $FSToken = Form::Sec::Token->new(ident => $session_key,
+    my $FSToken = Form::Security::Token->new(ident => $session_key,
                                         expire => 'expiration date');
     my $token = $FSToken->token();
     my $digest = $FSToken->digest();
@@ -25,7 +25,7 @@ version 0.01
     $form .= $FSToken->form_fields('XSRF_') . '</form>';
     ...
     ## The form gets posted and you create a new $FSToken with the posted fields
-    my $newFSToken = Form::Sec::Token->new(ident => $session_key,
+    my $newFSToken = Form::Security::Token->new(ident => $session_key,
                                            expire => $form_expire_field,
                                            token => $form_token_field);
     ## retrieve the digest you stored in the session

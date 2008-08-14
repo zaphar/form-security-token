@@ -1,6 +1,6 @@
 use inc::Module::Install;
 
-name    'Form-Sec-Token';
+name    'Form-Security-Token';
 
 perl_version        '5.006';
 all_from 'lib/Form/Sec/Token.pm';

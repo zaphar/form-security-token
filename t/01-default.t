@@ -5,7 +5,7 @@ BEGIN {
     plan tests => 11;
 }
 
-my $module = 'Form::Sec::Token';
+my $module = 'Form::Security::Token';
 
 use_ok($module);
 can_ok($module, qw{new ident expire token digest 
