@@ -6,6 +6,7 @@ perl_version        '5.006';
 all_from 'lib/Form/Security/Token.pm';
 
 requires            'Carp'              => 0;
+requires            'DateTime';
 requires            'Data::GUID';
 requires            'Digest::SHA1';
 
