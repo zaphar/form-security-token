@@ -3,7 +3,7 @@ use inc::Module::Install;
 name    'Form-Security-Token';
 
 perl_version        '5.006';
-all_from 'lib/Form/Sec/Token.pm';
+all_from 'lib/Form/Security/Token.pm';
 
 requires            'Carp'              => 0;
 requires            'Data::GUID';
