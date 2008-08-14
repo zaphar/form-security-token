@@ -2,7 +2,7 @@ use Test::More;
 use Test::MockModule;
 
 BEGIN {
-    plan tests => 11;
+    plan tests => 14;
 }
 
 my $module = 'Form::Security::Token';
