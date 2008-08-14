@@ -104,20 +104,6 @@ sub digest {
     return $self->_mk_digester()->( $self->token() );
 }
 
-=head2 assert_eq_token
-
-takes a token as an argument and compares it to the stored token. 
-Returns true or false
-this is useless I might just remove it. - jwall
-
-=cut
-
-sub assert_eq_token {
-    my $self = shift;
-    my $token = shift;
-    return $token eq $self->token();
-}
-
 =head2 assert_eq_digest
 
 takes a digest as an argument and compares it to its own digest. 

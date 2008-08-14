@@ -2,7 +2,7 @@ use Test::More;
 use Test::MockModule;
 
 BEGIN {
-    plan tests => 10;
+    plan tests => 11;
 }
 
 my $module = 'Form::Sec::Token';
@@ -33,7 +33,6 @@ can_ok($module, qw{new ident expire token digest
     my $token2 = $module->new(ident => 'foo', expire => '1 day', token => 'B45K698T');
     ok($token->token() eq 'B45K698T', 'Fake token got stored');
     ok($token->digest eq $token2->digest(), 'Two identical token objects have the same digest');
-    ok($token->assert_eq_token('B45K698T'), 'assert_eq_token with an identical token returns true');
     ok($token->assert_eq_digest($token2->digest()), 'assert_eq_digest with an identical digest returns true');
     ok($token->form_fields() eq "<input type='hidden' name='expire' id='expire' value='1 day' />".
                                 "<input type='hidden' name='token' id='token' value='B45K698T' />",
