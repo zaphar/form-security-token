@@ -28,10 +28,11 @@ version 0.01
     ## The form gets posted and you create a new $FSToken with the posted fields
     my $newFSToken = Form::Security::Token->new(ident => $session_key,
                                            expire => $form_expire_field,
+                                           ts     => $form_ts_field;
                                            token => $form_token_field);
     ## retrieve the digest you stored in the session
     ...
-    if ($newFSToken->assert_eq_digest($digest_from_session)) {
+    if ($newFSToken->assert_valid_digest($digest_from_session)) {
         ## continue
     } else {
         ## ack you just intercepted an XSRF attack
@@ -133,6 +134,7 @@ sub assert_eq_digest {
 =head2 assert_valid_digest
 
 takes a digest as an argument and returns true if valid false if not
+also takes expiration into account
 
 =cut
 
